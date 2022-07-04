@@ -32,7 +32,7 @@ ipywidgets==7.7.1
 Jinja2==3.1.2
 json5==0.9.8
 jsonschema==3.2.0
-jupyter-client==6.1.11
+jupyter-client==7.3.3
 jupyter-core==4.7.1
 jupyter-server==1.17.0
 jupyterlab-pygments==0.1.2
