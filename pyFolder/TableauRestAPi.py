@@ -68,10 +68,11 @@ def checkLogIn(username, password):
         return '<Response [401]>'
 
 
-def tSCRestAPI(my_workbook: str, my_worksheet: str, dim1: Optional[str]= None, val1: Optional[str] = None
+def tSCRestAPI(creds: tuple,my_workbook: str, my_worksheet: str, dim1: Optional[str]= None, val1: Optional[str] = None
               ,dim2: Optional[str] = None, val2: Optional[str] = None):
 
-
+    username=creds[0]
+    password=creds[1]
     # Connecting to Tableau Server environment
     tableau_server_config = {
             'tableau_prod': {
