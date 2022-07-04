@@ -1,23 +1,21 @@
 anyio==3.6.1
 
-argon2-cffi-bindings @ file:///C:/ci/argon2-cffi-bindings_1644551690056/work
-asttokens @ file:///opt/conda/conda-bld/asttokens_1646925590279/work
-attrs @ file:///opt/conda/conda-bld/attrs_1642510447205/work
+argon2-cffi==20.1.0
+async-generator==1.10
+attrs==20.3.0
+backcall==0.2.0
+bleach==3.3.0
 Babel==2.10.1
-backcall @ file:///home/ktietz/src/ci/backcall_1611930011877/work
+
 beautifulsoup4 @ file:///C:/ci/beautifulsoup4_1650293025093/work
-bleach @ file:///opt/conda/conda-bld/bleach_1641577558959/work
+
 cachetools==5.2.0
-certifi @ file:///C:/Windows/TEMP/abs_e9b7158a-aa56-4a5b-87b6-c00d295b01fanefpc8_o/croots/recipe/certifi_1655968940823/work/certifi
-cffi @ file:///C:/ci_310/cffi_1642682485096/work
-charset-normalizer==2.0.12
-colorama @ file:///tmp/build/80754af9/colorama_1607707115595/work
-debugpy @ file:///C:/ci/debugpy_1637091961445/work
-decorator @ file:///opt/conda/conda-bld/decorator_1643638310831/work
-defusedxml @ file:///tmp/build/80754af9/defusedxml_1615228127516/work
-entrypoints @ file:///C:/ci/entrypoints_1649926621128/work
-executing @ file:///opt/conda/conda-bld/executing_1646925071911/work
-fastjsonschema @ file:///tmp/build/80754af9/python-fastjsonschema_1620414857593/work/dist
+cffi==1.14.5
+colorama==0.4.4
+decorator==4.4.2
+defusedxml==0.6.0
+entrypoints==0.3
+
 google-api-core==2.8.2
 google-api-python-client==2.52.0
 google-auth==2.9.0
@@ -27,71 +25,67 @@ googleapis-common-protos==1.56.3
 httplib2==0.20.4
 idna==3.3
 importlib-metadata==4.11.4
-ipykernel @ file:///C:/ci/ipykernel_1646982785443/work/dist/ipykernel-6.9.1-py3-none-any.whl
-ipython @ file:///C:/ci/ipython_1651601994004/work
-ipython-genutils @ file:///tmp/build/80754af9/ipython_genutils_1606773439826/work
+ipykernel==5.4.3
+ipython==7.20.0
+ipython-genutils==0.2.0
 ipywidgets==7.7.1
 jedi @ file:///C:/ci/jedi_1644315428289/work
 Jinja2==3.1.2
 json5==0.9.8
-jsonschema @ file:///C:/ci/jsonschema_1650008058050/work
-jupyter-client @ file:///C:/ci/jupyter_client_1650515989971/work
-jupyter-core @ file:///C:/ci/jupyter_core_1651656286743/work
+jsonschema==3.2.0
+jupyter-client==6.1.11
+jupyter-core==4.7.1
 jupyter-server==1.17.0
-jupyterlab-pygments @ file:///tmp/build/80754af9/jupyterlab_pygments_1601490720602/work
+jupyterlab-pygments==0.1.2
 jupyterlab-server==2.14.0
 jupyterlab-widgets==1.1.1
-MarkupSafe @ file:///C:/ci/markupsafe_1654508077284/work
-matplotlib-inline @ file:///tmp/build/80754af9/matplotlib-inline_1628242447089/work
-mistune @ file:///C:/ci/mistune_1607359457024/work
-nbclient @ file:///C:/ci/nbclient_1650290387259/work
+MarkupSafe==1.1.1
+mistune==0.8.4
+nbclient==0.5.2
 nbconvert==6.5.0
-nbformat @ file:///C:/ci/nbformat_1649845125000/work
-nest-asyncio @ file:///C:/ci/nest-asyncio_1649829929390/work
-notebook @ file:///C:/ci/notebook_1651666819623/work
+nbformat==5.1.2
+nest-asyncio==1.5.1
+notebook==6.2.0
 numpy==1.23.0
 oauthlib==3.2.0
-packaging @ file:///tmp/build/80754af9/packaging_1637314298585/work
+packaging==20.9
 pandas==1.4.3
-pandocfilters @ file:///opt/conda/conda-bld/pandocfilters_1643405455980/work
-parso @ file:///opt/conda/conda-bld/parso_1641458642106/work
-pickleshare @ file:///tmp/build/80754af9/pickleshare_1606932040724/work
-prometheus-client @ file:///opt/conda/conda-bld/prometheus_client_1643788673601/work
-prompt-toolkit @ file:///tmp/build/80754af9/prompt-toolkit_1633440160888/work
+pandocfilters==1.4.3
+parso==0.8.1
+pickleshare==0.7.5
+prometheus-client==0.9.0
+prompt-toolkit==3.0.16
 protobuf==4.21.2
-pure-eval @ file:///opt/conda/conda-bld/pure_eval_1646925070566/work
+
 pyasn1==0.4.8
 pyasn1-modules==0.2.8
-pycparser @ file:///tmp/build/80754af9/pycparser_1636541352034/work
-Pygments @ file:///opt/conda/conda-bld/pygments_1644249106324/work
-pyparsing @ file:///tmp/build/80754af9/pyparsing_1635766073266/work
-pyrsistent @ file:///C:/ci/pyrsistent_1636093225342/work
-python-dateutil @ file:///tmp/build/80754af9/python-dateutil_1626374649649/work
+pycparser==2.20
+Pygments==2.8.0
+pyparsing==2.4.7
+pyrsistent==0.17.3
+python-dateutil==2.8.1
 pytz==2022.1
 pywin32==302
-pywinpty @ file:///C:/ci_310/pywinpty_1644230983541/work/target/wheels/pywinpty-2.0.2-cp39-none-win_amd64.whl
-pyzmq @ file:///C:/ci/pyzmq_1638435148211/work
+pywinpty==0.5.7
+pyzmq==22.0.3
 requests==2.27.1
 requests-oauthlib==1.3.1
 requests-toolbelt==0.9.1
 rsa==4.8
-Send2Trash @ file:///tmp/build/80754af9/send2trash_1632406701022/work
-six @ file:///tmp/build/80754af9/six_1644875935023/work
+Send2Trash==1.5.0
+six==1.15.0
 sniffio==1.2.0
-soupsieve @ file:///tmp/build/80754af9/soupsieve_1636706018808/work
-stack-data @ file:///opt/conda/conda-bld/stack_data_1646927590127/work
 tableau-api-lib==0.1.41
-terminado @ file:///C:/ci/terminado_1644322780199/work
-testpath @ file:///C:/Windows/TEMP/abs_23c7fa33-cbb9-46dc-b7c5-590c38e2de3d4bmbngal/croots/recipe/testpath_1655908553202/work
+
+testpath==0.4.4
 tinycss2==1.1.1
-tornado @ file:///C:/ci/tornado_1606924294691/work
-traitlets @ file:///tmp/build/80754af9/traitlets_1636710298902/work
+tornado==6.1
 typeguard==2.13.3
-typing_extensions @ file:///opt/conda/conda-bld/typing_extensions_1647553014482/work
+
 uritemplate==4.1.1
 urllib3==1.26.9
 voila==0.3.5
-wcwidth @ file:///Users/ktietz/demo/mc3/conda-bld/wcwidth_1629357192024/work
+wcwidth==0.2.5
 webencodings==0.5.1
 websocket-client==1.3.2
 websockets==10.3
