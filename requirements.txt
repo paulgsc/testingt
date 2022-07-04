@@ -1,5 +1,5 @@
 anyio==3.6.1
-argon2-cffi @ file:///opt/conda/conda-bld/argon2-cffi_1645000214183/work
+
 argon2-cffi-bindings @ file:///C:/ci/argon2-cffi-bindings_1644551690056/work
 asttokens @ file:///opt/conda/conda-bld/asttokens_1646925590279/work
 attrs @ file:///opt/conda/conda-bld/attrs_1642510447205/work
