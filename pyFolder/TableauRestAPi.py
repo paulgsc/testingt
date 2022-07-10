@@ -67,6 +67,12 @@ def checkLogIn(username, password):
     except ConnectionError:
         return '<Response [401]>'
 
+def getIvanFilter(passwtuple):
+    my_workbook = 'Fulfillment Reports'
+    my_worksheet = 'Initializtions'
+    df = tSCRestAPI(passwtuple,my_workbook, my_worksheet)
+    return df['Ivan Filter'].dropna().unique().tolist()
+
 
 def tSCRestAPI(creds: tuple,my_workbook: str, my_worksheet: str, dim1: Optional[str]= None, val1: Optional[str] = None
               ,dim2: Optional[str] = None, val2: Optional[str] = None):
@@ -111,11 +117,17 @@ def tSCRestAPI(creds: tuple,my_workbook: str, my_worksheet: str, dim1: Optional[
         CUSTOM_PARAMS = {
         'dim_1': 'vf_'+dim1+'='+val1,
         }
-    param_dict = get_encoded_params(CUSTOM_PARAMS)
-    print(param_dict)
+    try:
+        param_dict = get_encoded_params(CUSTOM_PARAMS)
+        print(param_dict)
+    except:
+        pass
 
     # Query the Data in the view filtered on dimensions
-    view_data_raw = querying.get_view_data_dataframe(conn, view_id=data_id,parameter_dict=param_dict)
+    try:
+        view_data_raw = querying.get_view_data_dataframe(conn, view_id=data_id,parameter_dict=param_dict)
+    except:
+        view_data_raw = querying.get_view_data_dataframe(conn, view_id=data_id)
 
     #renaming convention
     # view_data_raw.rename(columns={'Year of Order Date': 'Year'}, inplace=True)

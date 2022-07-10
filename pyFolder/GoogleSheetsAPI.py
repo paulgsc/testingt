@@ -64,6 +64,55 @@ def SheetsNew():
 
 # In[11]:
 
+def createNewSpreadsheet():   
+    sheet_body = {
+        'properties': {
+            'title': 'ApiSheetsNew',
+            'locale': 'en_US', # optional
+            'timeZone': 'America/Los_Angeles'
+            }
+        ,
+        'sheets': [
+            {
+                'properties': {
+                    'title': 'default'
+                }
+            }
+        ]
+    }
+
+    sheets_file2 = service.spreadsheets().create(body=sheet_body).execute()
+    return {'Url':sheets_file2['spreadsheetUrl'],'gsheetId':sheets_file2['spreadsheetId'],'sheet_names':sheets_file2['sheets']}
+
+
+def copySheets():
+    url='https://docs.google.com/spreadsheets/d/1z0U-WEYjoc8ByMUECr_zNSxTMPAVgyg3_w9pPuoVWDE/edit#gid=1891707339'
+    sourcegSheetId=getSheetId(url)
+    df = getSheetProperties(url)
+    worksheet_id=list(map(lambda x: df[x]['properties']['sheetId'],range(len(df))))
+    worksheet_names=list(map(lambda x: df[x]['properties']['title'],range(len(df))))
+    df1 = createNewSpreadsheet()
+    destgSheetId=getSheetId(df1['Url'])
+
+    for i in worksheet_id:
+        print('copying ' + str(i))
+       	service.spreadsheets().sheets().copyTo(
+        spreadsheetId=sourcegSheetId,
+        sheetId=i,
+        body={'destinationSpreadsheetId':destgSheetId}
+        ).execute()
+        copy_url = df1['Url']
+        prop = getSheetProperties(copy_url)
+        names=list(map(lambda x: prop[x]['properties']['title'],range(len(prop))))
+        sheet_ids=list(map(lambda x: prop[x]['properties']['sheetId'],range(len(prop))))
+        names=list(map(lambda x: x.replace('Copy of ',''),names))
+        for indx, sheet_id in enumerate(sheet_ids):
+            service.spreadsheets().batchUpdate(
+            spreadsheetId=destgSheetId,
+            body=request_template(sheet_id,names[indx])
+            ).execute()
+    return df1['Url']
+
 def file_time_stamp(pattern):
 
     """
@@ -223,6 +272,36 @@ def getLatestFileNameTime (path: Path, pattern: str = "*"):
     files = path.rglob(pattern)
     return max(files,key=lambda x: x.stat().st_ctime).stat().st_ctime
 
+def request_template(sheet_id, sheet_name):
+    request_body={
+        'requests': [
+            {
+                'updateSheetProperties': {
+                    'properties': {
+                        'sheetId': sheet_id,
+                        'title': sheet_name
+                    },
+                    'fields': 'title'
+                }
+            }
+        ]
+    }
+    return request_body
+
+
+def copyDiligentTemplate():
+    url = copySheets()
+    prop = getSheetProperties(url)
+    names=list(map(lambda x: prop[x]['properties']['title'],range(len(prop))))
+    sheet_ids=list(map(lambda x: prop[x]['properties']['sheetId'],range(len(prop))))
+    names=list(map(lambda x: x.replace('Copy of ',''),names))
+    gsheetId = getSheetId(url)
+    for indx, sheet_id in enumerate(sheet_ids):
+        service.spreadsheets().batchUpdate(
+        spreadsheetId=gsheetId,
+        body=request_template(sheet_id,names[indx])
+        ).execute()
+    return url
 
 def createNestFile(pattern):
     """
