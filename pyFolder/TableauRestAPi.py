@@ -121,18 +121,19 @@ def tSCRestAPI(creds: tuple,my_workbook: str, my_worksheet: str, dim1: Optional[
         param_dict = get_encoded_params(CUSTOM_PARAMS)
         print(param_dict)
     except:
+        print('failed getting bi data')
         pass
 
     # Query the Data in the view filtered on dimensions
     try:
         view_data_raw = querying.get_view_data_dataframe(conn, view_id=data_id,parameter_dict=param_dict)
+        print('done getting bi data')
     except:
         view_data_raw = querying.get_view_data_dataframe(conn, view_id=data_id)
-
     #renaming convention
     # view_data_raw.rename(columns={'Year of Order Date': 'Year'}, inplace=True)
-
     conn.sign_out()
+    print('closed bi')
     return view_data_raw
 
 
