@@ -68,9 +68,13 @@ def checkLogIn(username, password):
         return '<Response [401]>'
 
 def getIvanFilter(passwtuple):
+    import random
+    param=list(range(101))
     my_workbook = 'Fulfillment Reports'
     my_worksheet = 'Initializtions'
-    df = tSCRestAPI(passwtuple,my_workbook, my_worksheet)
+    dim1='cache reset'
+    val1=str(random.choice(param))
+    df = tSCRestAPI(passwtuple,my_workbook, my_worksheet,dim1,val1)
     return df['Ivan Filter'].dropna().unique().tolist()
 
 
@@ -111,29 +115,30 @@ def tSCRestAPI(creds: tuple,my_workbook: str, my_worksheet: str, dim1: Optional[
     if (dim2 != None):
         CUSTOM_PARAMS = {
         'dim_1': 'vf_'+dim1+'='+val1,
-        'dim_2': 'vf_'+dim2+'='+val2
+        'dim_2': 'vf_'+dim2+'='+val2,
+        'maxAge': 'maxAge=0'
         }
     if (dim2 == None and dim1 != None):
         CUSTOM_PARAMS = {
         'dim_1': 'vf_'+dim1+'='+val1,
+        'maxAge': 'maxAge=0'
         }
     try:
         param_dict = get_encoded_params(CUSTOM_PARAMS)
         print(param_dict)
     except:
-        print('failed getting bi data')
         pass
 
     # Query the Data in the view filtered on dimensions
     try:
         view_data_raw = querying.get_view_data_dataframe(conn, view_id=data_id,parameter_dict=param_dict)
-        print('done getting bi data')
     except:
         view_data_raw = querying.get_view_data_dataframe(conn, view_id=data_id)
+
     #renaming convention
     # view_data_raw.rename(columns={'Year of Order Date': 'Year'}, inplace=True)
+
     conn.sign_out()
-    print('closed bi')
     return view_data_raw
 
 
